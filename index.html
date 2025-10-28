@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darba lapa fizikā: Ķermeņa īpatnējās siltumietilpības noteikšana</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #2980b9;
+            margin-top: 25px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+        
+        .section {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        .calculation {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .formula {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            text-align: center;
+            margin: 15px 0;
+            font-size: 1.2em;
+        }
+        
+        .conclusion {
+            background-color: #e8f6ef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .equipment-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .equipment-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .equipment-list li:before {
+            content: "• ";
+            color: #3498db;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Darba lapa fizikā: Ķermeņa īpatnējās siltumietilpības noteikšana</h1>
+    
+    <div class="section">
+        <h2>Darba mērķis</h2>
+        <p>Eksperimentāli noteikt metāla ķermeņa īpatnējo siltumietilpību, izmantojot kalorimetru un siltuma bilances principu.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Darba uzdevums</h2>
+        <ol>
+            <li>Izmērīt metāla ķermeņa masu</li>
+            <li>Uzkarsēt metāla ķermeni līdz noteiktai temperatūrai</li>
+            <li>Izmērīt ūdens masu kalorimetrā</li>
+            <li>Izmērīt ūdens sākotnējo temperatūru kalorimetrā</li>
+            <li>Ielikt uzkarsēto metāla ķermeni kalorimetrā un izmērīt beigu temperatūru</li>
+            <li>Aprēķināt metāla ķermeņa īpatnējo siltumietilpību</li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>Darba piederumi</h2>
+        <ul class="equipment-list">
+            <li><strong>Pētāmais ķermenis</strong> - metāla ķermenis (piemēram, alumīnija, vara vai cinka gabals)</li>
+            <li><strong>Svari</strong> - laboratorijas svari ar atbilstošu svaru komplektu vai elektroniskie svari</li>
+            <li><strong>Termometrs</strong> - laboratorijas termometrs ar skalīti līdz 100°C vai digitālais termometrs</li>
+            <li><strong>Ūdens</strong> - destilēts ūdens istabas temperatūrā</li>
+            <li><strong>Kalorimetrs</strong> - siltumizolēta tvertne ar vāku un maisītāju</li>
+            <li><strong>Citi piederumi:</strong> karsētājs (vannas vai plīts), trauki ūdens uzglabāšanai, aizsargcimdi</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Hipotēze</h2>
+        <p>Ja metāla ķermeni ievieto ūdenī, tad siltuma daudzums, ko atdod metāla ķermenis, vienāds ar siltuma daudzumu, ko uzņem ūdens un kalorimetrs. Izmantojot šo principu, var aprēķināt metāla ķermeņa īpatnējo siltumietilpību.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Mērījumu un aprēķinu tabula</h2>
+        <table>
+            <tr>
+                <th>Lielums</th>
+                <th>Apzīmējums</th>
+                <th>Mērvienība</th>
+                <th>Mērījuma rezultāts</th>
+            </tr>
+            <tr>
+                <td>Metāla ķermeņa masa</td>
+                <td>m<sub>ķ</sub></td>
+                <td>kg</td>
+                <td id="mass_metal">0.100</td>
+            </tr>
+            <tr>
+                <td>Metāla ķermeņa sākotnējā temperatūra</td>
+                <td>t<sub>1ķ</sub></td>
+                <td>°C</td>
+                <td id="temp_metal_initial">95.0</td>
+            </tr>
+            <tr>
+                <td>Ūdens masa kalorimetrā</td>
+                <td>m<sub>ū</sub></td>
+                <td>kg</td>
+                <td id="mass_water">0.200</td>
+            </tr>
+            <tr>
+                <td>Ūdens sākotnējā temperatūra</td>
+                <td>t<sub>1ū</sub></td>
+                <td>°C</td>
+                <td id="temp_water_initial">20.0</td>
+            </tr>
+            <tr>
+                <td>Beigu temperatūra</td>
+                <td>t<sub>2</sub></td>
+                <td>°C</td>
+                <td id="temp_final">24.5</td>
+            </tr>
+            <tr>
+                <td>Kalorimetra siltumietilpība</td>
+                <td>C<sub>k</sub></td>
+                <td>J/°C</td>
+                <td id="heat_capacity_calorimeter">40.0</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="section">
+        <h2>Aprēķinu piemērs</h2>
+        <div class="calculation">
+            <p><strong>Siltuma bilances vienādojums:</strong></p>
+            <p class="formula">m<sub>ķ</sub> · c<sub>ķ</sub> · (t<sub>1ķ</sub> - t<sub>2</sub>) = m<sub>ū</sub> · c<sub>ū</sub> · (t<sub>2</sub> - t<sub>1ū</sub>) + C<sub>k</sub> · (t<sub>2</sub> - t<sub>1ū</sub>)</p>
+            
+            <p><strong>Ūdens īpatnējā siltumietilpība:</strong> c<sub>ū</sub> = 4200 J/(kg·°C)</p>
+            
+            <p><strong>Aprēķins:</strong></p>
+            <p>No siltuma bilances vienādojuma izsakām metāla ķermeņa īpatnējo siltumietilpību:</p>
+            <p class="formula">c<sub>ķ</sub> = [m<sub>ū</sub> · c<sub>ū</sub> · (t<sub>2</sub> - t<sub>1ū</sub>) + C<sub>k</sub> · (t<sub>2</sub> - t<sub>1ū</sub>)] / [m<sub>ķ</sub> · (t<sub>1ķ</sub> - t<sub>2</sub>)]</p>
+            
+            <p>Ievietojam mērījumu vērtības:</p>
+            <p class="formula">c<sub>ķ</sub> = [0.200 · 4200 · (24.5 - 20.0) + 40.0 · (24.5 - 20.0)] / [0.100 · (95.0 - 24.5)]</p>
+            
+            <p class="formula">c<sub>ķ</sub> = [0.200 · 4200 · 4.5 + 40.0 · 4.5] / [0.100 · 70.5]</p>
+            
+            <p class="formula">c<sub>ķ</sub> = [3780 + 180] / [7.05] = 3960 / 7.05 ≈ 561.7 J/(kg·°C)</p>
+            
+            <p><strong>Rezultāts:</strong> c<sub>ķ</sub> ≈ 562 J/(kg·°C)</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Secinājumi</h2>
+        <div class="conclusion">
+            <ol>
+                <li>Eksperimentāli noteiktā metāla ķermeņa īpatnējā siltumietilpība ir aptuveni 562 J/(kg·°C).</li>
+                <li>Salīdzinot iegūto vērtību ar zināmām metālu īpatnējām siltumietilpībām, var secināt, ka pētītais metāls, iespējams, ir alumīnijs (alumīnija īpatnējā siltumietilpība ir 900 J/(kg·°C) vai cinks (cinka īpatnējā siltumietilpība ir 380 J/(kg·°C)).</li>
+                <li>Iegūtā vērtība atšķiras no zināmajām vērtībām, kas varētu būt saistīts ar mērījumu kļūdām (temperatūras mērīšanas neprecizitāte, siltuma zudumi videi, neprecīzs kalorimetra siltumietilpības noteikšana).</li>
+                <li>Eksperiments apstiprina siltuma bilances principu - siltuma daudzums, ko atdod karstāks ķermenis, vienāds ar siltuma daudzumu, ko uzņem aukstākie ķermeņi.</li>
+            </ol>
+        </div>
+    </div>
+    
+    <script>
+        // Šeit varētu būt JavaScript kods mērījumu datu apstrādei
+        // Piemēram, aprēķinu automātizēšanai, ja mainās mērījumu vērtības
+    </script>
+</body>
+</html>
